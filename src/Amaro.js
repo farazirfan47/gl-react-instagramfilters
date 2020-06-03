@@ -1,5 +1,5 @@
 const GL = require("gl-react");
-const React = require("react");
+import React from "react"
 import resolveAssetSource from 'react-native/Libraries/Image/resolveAssetSource'
 
 const shaders = GL.Shaders.create({
@@ -34,19 +34,17 @@ const shaders = GL.Shaders.create({
   }
 });
 
-module.exports = GL.createComponent(
-  ({ children: inputImageTexture }) => {
-    return <GL.Node
-      shader={shaders.Amaro}
-      uniforms={{
-        inputImageTexture,
+export default class Amaro extends React.Component {
+  render() {
+    return (
+        <Node shader={shaders.Amaro} uniforms={{
+        this.props.inputImageTexture,
         inputImageTexture2: resolveAssetSource(require('../resources/blackboard1024.png')),
         inputImageTexture3: resolveAssetSource(require('../resources/overlayMap.png')),
         inputImageTexture4: resolveAssetSource(require('../resources/amaroMap.png')),
-      }}
-    />
-  },
-  {
-    displayName: "Amaro"
+      }} />
+    );
+// Surface creates the canvas, an area of pixels where you can draw.
+// Node instanciates a "shader program" with the fragment shader defined above.
   }
-);
+}

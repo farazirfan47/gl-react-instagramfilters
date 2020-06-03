@@ -81,21 +81,20 @@ const shaders = GL.Shaders.create({
   }
 });
 
-module.exports = GL.createComponent(
-  ({ children: inputImageTexture }) => {
-    return <GL.Node
-      shader={shaders.Brannan}
+export default class Brannan extends React.Component {
+  render() {
+    return (
+        <GL.Node shader={shaders.Brannan}
       uniforms={{
-        inputImageTexture,
+        this.props.inputImageTexture,
         inputImageTexture2: resolveAssetSource(require('../resources/brannanProcess.png')),
         inputImageTexture3: resolveAssetSource(require('../resources/brannanBlowout.png')),
         inputImageTexture4: resolveAssetSource(require('../resources/brannanContrast.png')),
         inputImageTexture5: resolveAssetSource(require('../resources/brannanLuma.png')),
         inputImageTexture6: resolveAssetSource(require('../resources/brannanScreen.png'))
-      }}
-    />
-  },
-  {
-    displayName: "Brannan"
+      }} />
+    );
+// Surface creates the canvas, an area of pixels where you can draw.
+// Node instanciates a "shader program" with the fragment shader defined above.
   }
-);
+}

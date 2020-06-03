@@ -107,21 +107,20 @@ const shaders = GL.Shaders.create({
   }
 });
 
-module.exports = GL.createComponent(
-  ({ children: inputImageTexture }) => {
-    return <GL.Node
-      shader={shaders.Earlybird}
+export default class Earlybird extends React.Component {
+  render() {
+    return (
+        <GL.Node shader={shaders.Earlybird}
       uniforms={{
-        inputImageTexture,
+        this.props.inputImageTexture,
         inputImageTexture2: resolveAssetSource(require('../resources/earlyBirdCurves.png')),
         inputImageTexture3: resolveAssetSource(require('../resources/earlybirdOverlayMap.png')),
         inputImageTexture4: resolveAssetSource(require('../resources/vignetteMap.png')),
         inputImageTexture5: resolveAssetSource(require('../resources/earlybirdBlowout.png')),
         inputImageTexture6: resolveAssetSource(require('../resources/earlybirdMap.png'))
-      }}
-    />
-  },
-  {
-    displayName: "Earlybird"
+      }} />
+    );
+// Surface creates the canvas, an area of pixels where you can draw.
+// Node instanciates a "shader program" with the fragment shader defined above.
   }
-);
+}
