@@ -36,9 +36,10 @@ const shaders = GL.Shaders.create({
 
 export default class Amaro extends React.Component {
   render() {
+    var {inputImageTexture} = this.props
     return (
         <Node shader={shaders.Amaro} uniforms={{
-        this.props.inputImageTexture,
+        inputImageTexture,
         inputImageTexture2: resolveAssetSource(require('../resources/blackboard1024.png')),
         inputImageTexture3: resolveAssetSource(require('../resources/overlayMap.png')),
         inputImageTexture4: resolveAssetSource(require('../resources/amaroMap.png')),

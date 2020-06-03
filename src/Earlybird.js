@@ -109,10 +109,11 @@ const shaders = GL.Shaders.create({
 
 export default class Earlybird extends React.Component {
   render() {
+    var {inputImageTexture} = this.props
     return (
         <GL.Node shader={shaders.Earlybird}
       uniforms={{
-        this.props.inputImageTexture,
+        inputImageTexture,
         inputImageTexture2: resolveAssetSource(require('../resources/earlyBirdCurves.png')),
         inputImageTexture3: resolveAssetSource(require('../resources/earlybirdOverlayMap.png')),
         inputImageTexture4: resolveAssetSource(require('../resources/vignetteMap.png')),

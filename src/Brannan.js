@@ -83,10 +83,11 @@ const shaders = GL.Shaders.create({
 
 export default class Brannan extends React.Component {
   render() {
+    var {inputImageTexture} = this.props
     return (
         <GL.Node shader={shaders.Brannan}
       uniforms={{
-        this.props.inputImageTexture,
+        inputImageTexture,
         inputImageTexture2: resolveAssetSource(require('../resources/brannanProcess.png')),
         inputImageTexture3: resolveAssetSource(require('../resources/brannanBlowout.png')),
         inputImageTexture4: resolveAssetSource(require('../resources/brannanContrast.png')),
