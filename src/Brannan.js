@@ -87,11 +87,11 @@ export default class Brannan extends React.Component {
         <Node shader={shaders.Brannan}
       uniforms={{
         inputImageTexture,
-        inputImageTexture2: (require('./resources/brannanProcess.png')),
-        inputImageTexture3: (require('./resources/brannanBlowout.png')),
-        inputImageTexture4: (require('./resources/brannanContrast.png')),
-        inputImageTexture5: (require('./resources/brannanLuma.png')),
-        inputImageTexture6: (require('./resources/brannanScreen.png'))
+        inputImageTexture2: (require('../resources/brannanProcess.png')),
+        inputImageTexture3: (require('../resources/brannanBlowout.png')),
+        inputImageTexture4: (require('../resources/brannanContrast.png')),
+        inputImageTexture5: (require('../resources/brannanLuma.png')),
+        inputImageTexture6: (require('../resources/brannanScreen.png'))
       }} />
     );
 // Surface creates the canvas, an area of pixels where you can draw.
