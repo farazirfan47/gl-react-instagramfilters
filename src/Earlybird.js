@@ -1,10 +1,9 @@
-import GL from 'gl-react'
+import {Shaders, Node, GLSL} from 'gl-react'
 import React from 'react'
-import resolveAssetSource from 'react-native/Libraries/Image/resolveAssetSource'
 
-const shaders = GL.Shaders.create({
+const shaders = Shaders.create({
   Earlybird: {
-    frag: `
+    frag: GLSL`
       precision highp float;
       varying vec2 uv;
 
@@ -109,16 +108,16 @@ const shaders = GL.Shaders.create({
 
 export default class Earlybird extends React.Component {
   render() {
-    var {inputImageTexture} = this.props
+    var {children: inputImageTexture} = this.props
     return (
-        <GL.Node shader={shaders.Earlybird}
+        <Node shader={shaders.Earlybird}
       uniforms={{
         inputImageTexture,
-        inputImageTexture2: resolveAssetSource(require('../resources/earlyBirdCurves.png')),
-        inputImageTexture3: resolveAssetSource(require('../resources/earlybirdOverlayMap.png')),
-        inputImageTexture4: resolveAssetSource(require('../resources/vignetteMap.png')),
-        inputImageTexture5: resolveAssetSource(require('../resources/earlybirdBlowout.png')),
-        inputImageTexture6: resolveAssetSource(require('../resources/earlybirdMap.png'))
+        inputImageTexture2: (require('../resources/earlyBirdCurves.png')),
+        inputImageTexture3: (require('../resources/earlybirdOverlayMap.png')),
+        inputImageTexture4: (require('../resources/vignetteMap.png')),
+        inputImageTexture5: (require('../resources/earlybirdBlowout.png')),
+        inputImageTexture6: (require('../resources/earlybirdMap.png'))
       }} />
     );
 // Surface creates the canvas, an area of pixels where you can draw.

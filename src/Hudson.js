@@ -1,11 +1,12 @@
 import {Shaders, Node, GLSL} from 'gl-react'
 import React from 'react'
 
+
 const shaders = Shaders.create({
-  Amaro: {
+  Hudson: {
     frag: GLSL`
       precision highp float;
-      varying highp vec2 uv;
+      varying vec2 uv;
 
       uniform sampler2D inputImageTexture;
       uniform sampler2D inputImageTexture2;
@@ -26,23 +27,25 @@ const shaders = Shaders.create({
         mapped.g = texture2D(inputImageTexture4, vec2(texel.g, .5)).g;
         mapped.b = texture2D(inputImageTexture4, vec2(texel.b, .16666)).b;
         mapped.a = 1.0;
-
         gl_FragColor = mapped;
 
       }`
   }
 });
 
-export default class Amaro extends React.Component {
+export default class Hudson extends React.Component {
   render() {
     var {children: inputImageTexture} = this.props
     return (
-        <Node shader={shaders.Amaro} uniforms={{
+      <Node
+      shader={shaders.Hudson}
+      uniforms={{
         inputImageTexture,
-        inputImageTexture2: (require('../resources/blackboard1024.png')),
+        inputImageTexture2: (require('../resources/hudsonBackground.png')),
         inputImageTexture3: (require('../resources/overlayMap.png')),
-        inputImageTexture4: (require('../resources/amaroMap.png')),
-      }} />
+        inputImageTexture4: (require('../resources/hudsonMap.png')),
+      }}
+    />
     );
 // Surface creates the canvas, an area of pixels where you can draw.
 // Node instanciates a "shader program" with the fragment shader defined above.

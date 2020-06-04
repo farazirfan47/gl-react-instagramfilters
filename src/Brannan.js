@@ -1,10 +1,9 @@
-import GL from 'gl-react'
+import {Shaders, Node, GLSL} from 'gl-react'
 import React from 'react'
-import resolveAssetSource from 'react-native/Libraries/Image/resolveAssetSource'
 
-const shaders = GL.Shaders.create({
+const shaders = Shaders.create({
   Brannan: {
-    frag: `
+    frag: GLSL`
       precision highp float;
       varying vec2 uv;
 
@@ -83,16 +82,16 @@ const shaders = GL.Shaders.create({
 
 export default class Brannan extends React.Component {
   render() {
-    var {inputImageTexture} = this.props
+    var {children: inputImageTexture} = this.props
     return (
-        <GL.Node shader={shaders.Brannan}
+        <Node shader={shaders.Brannan}
       uniforms={{
         inputImageTexture,
-        inputImageTexture2: resolveAssetSource(require('../resources/brannanProcess.png')),
-        inputImageTexture3: resolveAssetSource(require('../resources/brannanBlowout.png')),
-        inputImageTexture4: resolveAssetSource(require('../resources/brannanContrast.png')),
-        inputImageTexture5: resolveAssetSource(require('../resources/brannanLuma.png')),
-        inputImageTexture6: resolveAssetSource(require('../resources/brannanScreen.png'))
+        inputImageTexture2: (require('./resources/brannanProcess.png')),
+        inputImageTexture3: (require('./resources/brannanBlowout.png')),
+        inputImageTexture4: (require('./resources/brannanContrast.png')),
+        inputImageTexture5: (require('./resources/brannanLuma.png')),
+        inputImageTexture6: (require('./resources/brannanScreen.png'))
       }} />
     );
 // Surface creates the canvas, an area of pixels where you can draw.

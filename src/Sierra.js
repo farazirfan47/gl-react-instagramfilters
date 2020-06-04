@@ -2,10 +2,10 @@ import {Shaders, Node, GLSL} from 'gl-react'
 import React from 'react'
 
 const shaders = Shaders.create({
-  Amaro: {
+  Sierra: {
     frag: GLSL`
       precision highp float;
-      varying highp vec2 uv;
+      varying vec2 uv;
 
       uniform sampler2D inputImageTexture;
       uniform sampler2D inputImageTexture2;
@@ -28,21 +28,24 @@ const shaders = Shaders.create({
         mapped.a = 1.0;
 
         gl_FragColor = mapped;
-
       }`
   }
 });
 
-export default class Amaro extends React.Component {
+
+export default class Sierra extends React.Component {
   render() {
     var {children: inputImageTexture} = this.props
     return (
-        <Node shader={shaders.Amaro} uniforms={{
+<Node
+      shader={shaders.Sierra}
+      uniforms={{
         inputImageTexture,
-        inputImageTexture2: (require('../resources/blackboard1024.png')),
+        inputImageTexture2: (require('../resources/sierraVignette.png')),
         inputImageTexture3: (require('../resources/overlayMap.png')),
-        inputImageTexture4: (require('../resources/amaroMap.png')),
-      }} />
+        inputImageTexture4: (require('../resources/sierraMap.png')),
+      }}
+    />
     );
 // Surface creates the canvas, an area of pixels where you can draw.
 // Node instanciates a "shader program" with the fragment shader defined above.
